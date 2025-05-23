@@ -449,7 +449,7 @@ Terdapat 2 kategori dalam fitur diabetes, yaitu 0 (tidak memiliki penyakit diabe
 diabetes_df.hist(bins=50, figsize=(20,15))
 plt.show()
 ```
-[alt text](image-6.png)
+[Univar_Num](https://github.com/sorayaindahs/predictive-analytics/blob/main/Screenshot%202025-05-23%20113001.png?raw=true)
 
 Histogram di atas menunjukkan bahwa:
 - Distribusi usia cukup merata dari usia 0 sampai 80 tahun dan memperlihatkan bahwa sebagian besar pasien berada di usia produktif dan lansia. Terjadi lonjakan di usia 80 tahun.
@@ -458,6 +458,7 @@ Histogram di atas menunjukkan bahwa:
 - blood_glucose_level tersebar dari sekitar 70 hingga hampir 300, tetapi dengan dominasi jumlah sampel pada angka-angka tertentu. Terjadi lonjakan besar pada nilai sekitar 155.
 
 ### Multivariate Analysis
+
 ```
 cat_features = diabetes_df.select_dtypes(include='object').columns.difference(['diabetes']).to_list()
 for col in cat_features:
@@ -466,7 +467,8 @@ for col in cat_features:
     plt.xticks(rotation=45)
     plt.tight_layout()
     plt.show()
-    ```
+```
+
 ![Histogram Fitur Numerik](https://github.com/sorayaindahs/predictive-analytics/blob/main/Screenshot%202025-05-23%20113001.png?raw=true)
 
 **gender**
@@ -492,7 +494,6 @@ for col in cat_features:
 ```
 sns.pairplot(diabetes_df[numerical_features + ['diabetes']], hue='diabetes', diag_kind='kde')
 plt.show()
-
 ```
 ![Multivariate_num](https://github.com/sorayaindahs/predictive-analytics/blob/main/Screenshot%202025-05-23%20122429.png?raw=true)
 - age: Distribusi usia pasien penderita diabetes cenderung lebih tinggi di usia dewasa-tua, dibandingkan dengan yang tidak diabetes yang tersebar lebih luas, termasuk usia muda.
