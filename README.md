@@ -4,7 +4,7 @@
 
 Diabetes merupakan salah satu penyakit tidak menular yang sangat berdampak pada kondisi kesehatan masyarakat secara global. Menurut data yang dipublikasi oleh International Diabetes Federation (IDF), penderita diabetes di dunia pada tahun 2021 berada di angka 537 juta jiwa. Angka ini diprediksi akan terus meningkat akibat gaya hidup masyarakat. 
 Prediksi untuk mengetahui potensi diabetes pada individu sangat penting untuk dilakukan guna mencegah penyakit diabetes secepat mungkin. Tidak semua masyarakat mampu mengakses fasilitas kesehatan yang layak untuk cek kesehatan secara rutin (Lituwang, 2023). Diperlukan teknologi yang praktis dan efisien untuk memprediksi potensi diabetes masyarakat secara individu. 
-Sebagian masyarakat tidak menyadari bahwa mereka menderita penyakit diabetes sampai gejala yang dimiliki semakin parah. Perihal membantu menciptakan teknologi yang mampu memprediksi diagnosis penyakit ini secara efisien, metode k-Nearest Neighbor (KNN) dapat diaplikasikan untuk memprediksi potensi seseorang terkena diabetes (Melinda et al., 2022). Algoritma KNN bekerja dengan mengelompokkan data berdasarkan tingkat kemiripan atau kedekatan dengan data lainnya (Sholeh et al., 2022). Selain algoritma KNN, terdapat algoritma lain, seperti Random Forest yang dapat digunakan untuk memprediksi diabetes seseorang (Yunita et al., 2021).
+Sebagian masyarakat tidak menyadari bahwa mereka menderita penyakit diabetes sampai gejala yang dimiliki semakin parah. Perihal membantu menciptakan teknologi yang mampu memprediksi diagnosis penyakit ini secara efisien, metode K-Nearest Neighbor (KNN) dapat diaplikasikan untuk memprediksi potensi seseorang terkena diabetes (Melinda et al., 2022). Algoritma KNN bekerja dengan mengelompokkan data berdasarkan tingkat kemiripan atau kedekatan dengan data lainnya (Sholeh et al., 2022). Selain algoritma KNN, terdapat algoritma lain, seperti Random Forest yang dapat digunakan untuk memprediksi diabetes seseorang (Yunita et al., 2021).
 
 Referensi:
 
@@ -37,11 +37,11 @@ Yunita, R., & Zulfian, L. (2021). Penerapan Algoritma Random Forest Dalam Klasif
 
  ### Solution statements
 
-- **Membangun model dengan algoritma K-Nearest Neighbor**
+- **Membangun model dengan algoritma K-Nearest Neighbor untuk Prediksi Diabetes**
 
 Algoritma KNN menggunakan pendekatan jarak untuk mengklasifikasikan seseorang ke dalam kategori berisiko atau tidak berisiko diabetes berdasarkan kemiripan data kondisi kesehatan yang dimiliki. Model ini akan diuji menggunakan nilai n_neighbor yang optimal. Evaluasi performa dilakukan menggunakan metrik seperti akurasi, precision, recall, dan F1-score, untuk mengukur seberapa baik performal model dalam memprediksi diabetes.
 
- - **Membangun model dengan algoritma Random Forest**
+ - **Membangun model dengan algoritma Random Forest untuk Prediksi Diabetes**
 
 Algoritma Random Forest digunakan untuk memprediksi risiko diabetes dengan menggabungkan hasil dari sejumlah pohon keputusan. Model ini akan dievaluasi berdasarkan kombinasi parameter seperti n_estimators dan max_depth. Sana halnya dengan model KNN, evaluasi performa dilakukan menggunakan metrik seperti akurasi, precision, recall, dan F1-score, untuk mengukur seberapa baik performal model dalam memprediksi diabetes.
 
@@ -62,9 +62,9 @@ path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
 diabetes_df = pd.read_csv(path)
 diabetes_df
 ```
-RangeIndex: 100000 entries, 0 to 99999
+    RangeIndex: 100000 entries, 0 to 99999
 
-Data columns (total 9 columns):
+    Data columns (total 9 columns):
 
     Column               Non-Null Count   Dtype 
 
@@ -88,7 +88,7 @@ Data columns (total 9 columns):
 
 ### Deskripsi Variabel
 
-*Variabel prediktor**
+**Variabel prediktor**
 
 `gender`: jenis kelamin responden
 
@@ -114,14 +114,15 @@ Data columns (total 9 columns):
 - Terdapat 3 kolom numerik dengan tipe data float64 yaitu age, bmi, dan HbA1c_level.
 - Terdapat 4 kolom numerik dengan tipe data int64, yaitu hypertension, heart_disease, blood_glucose_level, dan diabetes.
 
-### Mengubah tipe data kolom heypertension, heart_disease, dan diabetes menjadi object
+### Mengubah tipe data kolom hypertension, heart_disease, dan diabetes menjadi object
 
 ```
 diabetes_df['hypertension'] = diabetes_df['hypertension'].astype('object')
 diabetes_df['heart_disease'] = diabetes_df['heart_disease'].astype('object')
 diabetes_df['diabetes'] = diabetes_df['diabetes'].astype('object')
-
 ```
+
+### Cek Summary
 ```
 diabetes_df.describe()
 ```
@@ -194,17 +195,17 @@ print("Nilai 0 di kolom age ada: ", age)
 print("Nilai 0 di kolom HbA1c_level ada: ", HbA1c_level)
 print("Nilai 0 di kolom blood_glucose_level ada: ", blood_glucose_level)
 ```
-Nilai 0 di kolom age ada:  0
+    Nilai 0 di kolom age ada:  0
 
-Nilai 0 di kolom HbA1c_level ada:  0
+    Nilai 0 di kolom HbA1c_level ada:  0
 
-Nilai 0 di kolom blood_glucose_level ada:  0
+    Nilai 0 di kolom blood_glucose_level ada:  0
 
 Berdasarkan identifikasi, tidak ada missing value yang harus ditangani.
 
 ### Menangani Outlier
 
-**gender**
+**Fitur gender**
 ```
 gender = diabetes_df['gender'].value_counts()
 print(gender)
@@ -223,7 +224,8 @@ diabetes_df = diabetes_df[diabetes_df['gender'] != 'Other']
 
 Berdasarkan identifikasi, terlihat bahwa kolom gender berisi 3 kategori, yaitu Female, Male, dan Other. Pada dasarnya gender terdiri dari 2 kategori, yaitu Female dan Male saja, sehingga 18 baris yang kolom Gender berisi Other sebaiknya dihapus agar tidak menimbulkan bias.
 
-**age**
+
+**Fitur age**
 
     age	   count
 
@@ -258,20 +260,22 @@ sns.boxplot(x=diabetes_df['age'])
 ```
 ![Boxplot age](https://github.com/sorayaindahs/predictive-analytics/blob/main/Screenshot%202025-05-23%20112523.png?raw=true)
 
-**hypertension dan heart_disease**
+
+**Fitur hypertension dan heart_disease**
 ```
 diabetes_df['hypertension'].unique()
 diabetes_df['heart_disease'].unique()
 ```
-array([0, 1], dtype=object)
+    array([0, 1], dtype=object)
 
-array([1, 0], dtype=object)
+    array([1, 0], dtype=object)
 
 Kolom hypertension tidak memiliki outlier karena kategori sesuai, yaitu 0 (tidak memiliki hipertensi) dan 1 (memiliki hipertensi).
 
 Kolom heart_disease tidak memiliki outlier karena kategori sesuai, yaitu 0 (tidak memiliki penyakit jantung) dan 1 (memiliki penyakit jantung).
 
-**smoking_history**
+
+**Fitur smoking_history**
 ```
 diabetes_df['smoking_history'].value_counts()
 ```
@@ -291,14 +295,15 @@ diabetes_df['smoking_history'].value_counts()
 
     ever	4003
 
-Berdasarkan identifikasi, kolom smoking_history berisi 6 kategori, yaitu No Info, never, former, current, not current, dan ever. Untuk mempermudah analisis, sebaiknya dikategorikan lagi menjadi never (tidak pernah merokok), ever (pernah tapi sudah tidak merokok), dan current (saat ini perokok). Untuk former dan not current dapat dikategorikan ke ever karena sama-sama pernah merokok, tetapi saat ini sudah tidak merokok. Selanjutnya, kategori No Info sebanyak 35816 dipertahankan agar tidak menghilangkan banyak informasi karena frekuensinya yang sangat besar.
+Berdasarkan identifikasi, kolom smoking_history berisi 6 kategori, yaitu No Info, never, former, current, not current, dan ever. Untuk mempermudah analisis, sebaiknya dikategorikan lagi menjadi never (tidak pernah merokok), ever (pernah tapi sudah tidak merokok), dan current (saat ini perokok). Untuk former dan not current dapat dikategorikan ke ever karena sama-sama pernah merokok, tetapi saat ini sudah tidak merokok. Selanjutnya, kategori No Info sebanyak 34946 dipertahankan agar tidak menghilangkan banyak informasi karena frekuensinya yang sangat besar.
 
 Mengubah kategori former, current, not current berubah menjadi ever
 ```
 diabetes_df['smoking_history'] = diabetes_df['smoking_history'].replace(['former', 'not current'],'ever')
 ```
 
-**bmi**
+
+**Fitur bmi**
 ```
 sns.boxplot(x=diabetes_df['bmi'])
 ```
@@ -309,14 +314,17 @@ Menghapus baris dengan bmi > 60
 diabetes_df = diabetes_df[diabetes_df['bmi'] < 60]
 ```
 
-**HbA1c_level**
+
+**Fitur HbA1c_level**
 ```
 sns.boxplot(x=diabetes_df['HbA1c_level'])
 ```
 ![Boxplot HbA1c_level](https://github.com/sorayaindahs/predictive-analytics/blob/main/Screenshot%202025-05-23%20112750.png?raw=true)
 Terlihat bahwa kolom HbA1c_level memiliki banyak outliers, namun tidak perlu dihapus karena angka tersebut masih relevan secara medis.
 
-**blood_glucose_level**
+
+
+**Fitur blood_glucose_level**
 ```
 sns.boxplot(x=diabetes_df['blood_glucose_level'])
 ```
@@ -324,11 +332,13 @@ sns.boxplot(x=diabetes_df['blood_glucose_level'])
 
 Terlihat bahwa kolom blood_glucose_level memiliki banyak outliers, namun tidak perlu dihapus karena angka tersebut masih relevan secara medis.
 
-**diabetes**
+
+
+**Fitur diabetes**
 ```
 diabetes_df['diabetes'].unique()
 ```
-array([0, 1], dtype=object)
+    array([0, 1], dtype=object)
 
 Output dari kode di atas menunjukkan bahwa kolom diabetes tidak memiliki outlier karena kategori sesuai, yaitu 0 (tidak memiliki penyakit diabetes) dan 1 (memiliki penyakit diabetes).
 
@@ -345,7 +355,7 @@ numerical_features = ['age', 'bmi', 'HbA1c_level', 'blood_glucose_level']
 categorical_features = ['gender', 'hypertension', 'heart_disease', 'smoking_history', 'diabetes']
 ```
 #### Categorical Features
-**gender**
+**Fitur gender**
 ```
 feature = categorical_features[0]
 count = diabetes_df[feature].value_counts()
@@ -354,7 +364,7 @@ df = pd.DataFrame({'jumlah sampel':count, 'persentase':percent.round(1)})
 print(df)
 count.plot(kind='bar', title=feature);
 ```
-jumlah sampel  persentase
+    jumlah sampel  persentase
 
     gender        
 
@@ -364,7 +374,9 @@ jumlah sampel  persentase
 
 Terdapat 2 kategori dalam fitur gender, yaitu Female dan Male. Sebesar 58.5% kategori pada fitur gender adalah Female yang artinya lebih banyak dari Male.
 
-**hypertension**
+
+
+**Fitur hypertension**
 ```
 feature = categorical_features[1]
 count = diabetes_df[feature].value_counts()
@@ -373,7 +385,7 @@ df = pd.DataFrame({'jumlah sampel':count, 'persentase':percent.round(1)})
 print(df)
 count.plot(kind='bar', title=feature);
 ```
-jumlah sampel  persentase
+    jumlah sampel  persentase
 
     hypertension      
 
@@ -383,7 +395,9 @@ jumlah sampel  persentase
 
 Terdapat 2 kategori dalam fitur hypertension, yaitu 0 (tidak memiliki  hipertensi) dan 1 (memiliki  hipertensi). Sebesar 92.2% pasien tidak memiliki  hipertensi dan 7.8% pasien memiliki  hipertensi.
 
-**heart_disease**
+
+
+**Fitur heart_disease**
 ```
 feature = categorical_features[2]
 count = diabetes_df[feature].value_counts()
@@ -392,7 +406,7 @@ df = pd.DataFrame({'jumlah sampel':count, 'persentase':percent.round(1)})
 print(df)
 count.plot(kind='bar', title=feature);
 ```
- jumlah sampel  persentase
+    jumlah sampel  persentase
 
     heart_disease       
 
@@ -402,7 +416,9 @@ count.plot(kind='bar', title=feature);
 
 Terdapat 2 kategori dalam fitur heart_disease, yaitu 0 (tidak memiliki penyakit jantung) dan 1 (memiliki penyakit jantung). Sebesar 95.9% pasien tidak memiliki penyakit jantung dan 4.1% pasien memiliki penyakit jantung.
 
-**smoking_history**
+
+
+**Fitur smoking_history**
 ```
 feature = categorical_features[3]
 count = diabetes_df[feature].value_counts()
@@ -411,7 +427,7 @@ df = pd.DataFrame({'jumlah sampel':count, 'persentase':percent.round(1)})
 print(df)
 count.plot(kind='bar', title=feature);
 ```
-jumlah sampel  persentase
+    jumlah sampel  persentase
 
     smoking_history      
 
@@ -425,7 +441,9 @@ jumlah sampel  persentase
 
 Terdapat 4 kategori dalam fitur smoking_history, yaitu never (tidak pernah merokok), No Info (tidak memberi informasi), ever (pernah tapi sudah tidak merokok), dan current (saat ini perokok). Sebanyak 36.1% pasien tidak pernah merokok, sebanyak 33.7% pasien tidak memberikan informasi, sebanyak 20.5% pasien pernah tapi sudah berhenti merokok, dan 9.7% pasien saat ini perokok.
 
-**diabetes**
+
+
+**Fitur diabetes**
 ```
 feature = categorical_features[4]
 count = diabetes_df[feature].value_counts()
@@ -434,7 +452,7 @@ df = pd.DataFrame({'jumlah sampel':count, 'persentase':percent.round(1)})
 print(df)
 count.plot(kind='bar', title=feature);
 ```
- jumlah sampel  persentase
+    jumlah sampel  persentase
 
     diabetes      
 
@@ -449,7 +467,7 @@ Terdapat 2 kategori dalam fitur diabetes, yaitu 0 (tidak memiliki penyakit diabe
 diabetes_df.hist(bins=50, figsize=(20,15))
 plt.show()
 ```
-[Univar_Num](https://github.com/sorayaindahs/predictive-analytics/blob/main/Screenshot%202025-05-23%20113001.png?raw=true)
+![Multivariate_num](https://github.com/sorayaindahs/predictive-analytics/blob/main/Screenshot%202025-05-23%20122429.png?raw=true)
 
 Histogram di atas menunjukkan bahwa:
 - Distribusi usia cukup merata dari usia 0 sampai 80 tahun dan memperlihatkan bahwa sebagian besar pasien berada di usia produktif dan lansia. Terjadi lonjakan di usia 80 tahun.
@@ -496,6 +514,7 @@ sns.pairplot(diabetes_df[numerical_features + ['diabetes']], hue='diabetes', dia
 plt.show()
 ```
 ![Multivariate_num](https://github.com/sorayaindahs/predictive-analytics/blob/main/Screenshot%202025-05-23%20122429.png?raw=true)
+
 - age: Distribusi usia pasien penderita diabetes cenderung lebih tinggi di usia dewasa-tua, dibandingkan dengan yang tidak diabetes yang tersebar lebih luas, termasuk usia muda.
 - bmi: Distribusi bmi terlihat tidak jauh berbeda antara dua kelas, tetapi persebaran pasien yang memiliki diabetes sedikit lebih padat di rentang bmi > 25 (overweight/obesitas).
 - HbA1c_level: Perbedaan sangat signifikan, pasien penderita diabetes dominan pada nilai HbA1c di atas 6.5, sedangkan non-diabetes lebih banyak di bawah 6.5. Hal ini relevan secara medis.
@@ -535,6 +554,7 @@ Fitur `blood_glucose_level` memiliki korelasi 0.42. Hal ini menunjukkan korelasi
 ### Encoding Fitur Kategori
 
 Proses encoding variabel kategorikal menggunakan LabelEncoder untuk mengubah data teks menjadi format numerik yang dapat diproses saat membuat model. Kolom seperti smoking_history, gender, hypertension, heart_disease, dan diabetes diubah nilainya menjadi angka sesuai urutan kategorinya.
+
 ```
 from sklearn.preprocessing import LabelEncoder
 le = LabelEncoder()
@@ -545,9 +565,8 @@ diabetes_df['heart_disease'] = le.fit_transform(diabetes_df['heart_disease'])
 diabetes_df['diabetes'] = le.fit_transform(diabetes_df['diabetes'])
 ```
 
-### Train-Test_Split
+### Train-Test-Split
 Sebelum melakukan pemodelan, data dibagi menjadi data training sebanyak 80% dan data testing sebanyak 20% yang bertujuan agar model yang dilatih dapat memelajari pola pada data training dan menghasilkan performa yang baik.
-
 
 ```
 X = diabetes_df.drop('diabetes', axis=1)
@@ -557,7 +576,6 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 
 ### Standarisasi
 Standarisasi diterapkan pada fitur numerik menggunakan StandardScaler yang bertujuan untuk mengubah skala data agar memiliki rata-rata 0 dan standar deviasi 1. Hal ini dapat menyeimbangkan sakala antarfitur.
-
 
 ```
 X = diabetes_df.drop('diabetes', axis=1)
@@ -584,7 +602,6 @@ models = pd.DataFrame(index=['train_acc', 'test_acc'],
 
 Selanjutnya, melatih data dengan KNN. Sebelum membuat model, perlu diketahui nilai neighbor terbaik.
 
-
 ```
 k_values = range(1, 31)
 cv_scores = []
@@ -604,14 +621,15 @@ plt.show()
 optimal_k = k_values[cv_scores.index(max(cv_scores))]
 print(f"Nilai k terbaik: {optimal_k}")
 ```
-![alt text](image-8.png)
+![Grafik k](https://github.com/sorayaindahs/predictive-analytics/blob/main/Screenshot%202025-05-23%20125054.png?raw=true)
 
 Nilai k terbaik: 17
 
 KNN menggunakan parameter n_neighbors=17 yang berarti model akan mempertimbangkan 17 tetangga terdekat dalam menentukan kelas suatu data, bertujuan untuk mencapai keseimbangan antara overfitting dan underfitting.
 Selanjutnya, model dilatih menggunakan data train dan digunakan untuk memprediksi label pada data train dan data test.
 
-## Model Development: K-Nearest Neighbor
+## Model Development: Random Forest
+
 ```
 rf_model = RandomForestClassifier(n_estimators=50, max_depth=16, random_state=55, n_jobs=-1)
 
@@ -621,6 +639,7 @@ y_pred_train_rf = rf_model.predict(X_train)
 y_pred_test_rf = rf_model.predict(X_test)
 ```
 Random Forest Classifier dengan parameter n_estimators=50 yang berarti model membangun 50 decision trees untuk menghasilkan prediksi kolektif. Parameter max_depth=16 digunakan untuk membatasi depth maksimal.
+
 
 ## Evaluation
 
@@ -636,7 +655,7 @@ print(classification_report(y_test, y_pred_test_knn))
 print("KNN Confusion Matrix (Test):")
 print(confusion_matrix(y_test, y_pred_test_knn))
 ```
-KNN Classification Report (Test):
+    KNN Classification Report (Test):
 
               precision    recall  f1-score   support
 
@@ -646,16 +665,15 @@ KNN Classification Report (Test):
 
     accuracy                           0.96     18980
 
-   macro avg       0.96      0.79      0.85     18980
+     macro avg       0.96      0.79      0.85     18980
 
-weighted avg       0.96      0.96      0.95     18980
+    weighted avg       0.96      0.96      0.95     18980
 
-KNN Confusion Matrix (Test):
+    KNN Confusion Matrix (Test):
 
-[[17223    47]
+    [[17223    47]
 
- [  730   980]]
-
+    [  730   980]]
 
 Kelebihan:
 
@@ -663,13 +681,13 @@ Kelebihan:
 
 - Model mampu memprediksi pasien non-diabetes (kelas 0) sangat baik, ditunjukkan dengan nilai recall sempurna 1.00 yang artinya hampir tidak ada kesalahan dalam klasifikasi negatif.
 
-- Nilai presisi untuk kelas positif (1) juga tinggi, yaitu 0.95 yang menandakan bahwa prediksi positif dari model ini umumnya benar.
+- Nilai presisi untuk kelas positif (1) juga tinggi, yaitu 95% yang menandakan bahwa prediksi positif dari model ini umumnya benar.
 
 Kelemahan:
 
-- Meskipun niali presisi tinggi, recall untuk kelas 1 hanya mencapai 0.57 yang artinya model masih sering gagal mengenali pasien yang sebenarnya mengidap diabetes, masih terdapat 730 kasus false negative.
+- Meskipun niali presisi tinggi, recall untuk kelas 1 hanya mencapai 57% yang artinya model masih sering gagal mengenali pasien yang sebenarnya mengidap diabetes, masih terdapat 730 kasus false negative.
 
-- Nilai F1-score kelas 1 cukup rendah, yaitu 0.72. Hal ini juga mencerminkan bahwa keseimbangan antara precision dan recall masih belum optimal.
+- Nilai F1-score kelas 1 cukup rendah, yaitu 72%. Hal ini juga mencerminkan bahwa keseimbangan antara precision dan recall masih belum optimal.
 
 **Random Forest**
 ```
@@ -682,7 +700,7 @@ print(classification_report(y_test, y_pred_test_rf))
 print("Random Forest Confusion Matrix (Test):")
 print(confusion_matrix(y_test, y_pred_test_rf))
 ```
-Random Forest Classification Report (Test):
+    Random Forest Classification Report (Test):
 
               precision    recall  f1-score   support
 
@@ -692,29 +710,30 @@ Random Forest Classification Report (Test):
 
     accuracy                           0.97     18980
 
-   macro avg       0.97      0.84      0.89     18980
+    macro avg       0.97      0.84      0.89     18980
 
-weighted avg       0.97      0.97      0.97     18980
+    weighted avg       0.97      0.97      0.97     18980
 
-Random Forest Confusion Matrix (Test):
+    Random Forest Confusion Matrix (Test):
 
-[[17246    24]
+    [[17246    24]
 
- [  560  1150]]
+    [  560  1150]]
 
 Kelebihan:
 
-Model Random Forest mempunyai akurasi lebih tinggi dibanding KNN, yaitu sebesar 97%. Recall kelas 1 sebesar 0.67 yang berarti lebih efektif dalam mengidentifikasi pasien yang menderita diabetes. Jumlah false negative juga lebih sedikit, yaitu 560.
+- Model Random Forest mempunyai akurasi lebih tinggi dibanding KNN, yaitu sebesar 97%. Recall kelas 1 sebesar 67% yang berarti lebih efektif dalam mengidentifikasi pasien yang menderita diabetes. Jumlah false negative juga lebih sedikit, yaitu 560.
 
-Selain itu, F1-score untuk kelas 1 lebih tinggi, yaitu 0.80 yang mencerminkan keseimbangan yang lebih baik antara kemampuan memprediksi kelas positif.
+- Selain itu, F1-score untuk kelas 1 lebih tinggi, yaitu 80% yang mencerminkan keseimbangan yang lebih baik antara kemampuan memprediksi kelas positif.
 
 Kelemahan:
+
 Model ini masih menghasilkan sejumlah false negative yang cukup signifikan, sehingga belum sepenuhnya optimal untuk kebutuhan deteksi dini.
 
 ## Kesimpulan
 
-Berdasarkan predictive analysis yang telah dilakukan, dapat disimpulkan bahwa metode machine learning dapat digunakan sebagai alat untuk memprediksi potensi seseorang mengidap diabetes secara efisien dan akurat. Menggunakan data pasien seperti usia, indeks massa tubuh (BMI), kadar glukosa darah, serta riwayat kesehatan lainnya. Algoritma klasifikasi yaitu K-Nearest Neighbor (KNN) dan Random Forest digunakan untuk membandingkan performa model dalam mengklasifikasikan data. 
+- Berdasarkan predictive analysis yang telah dilakukan, dapat disimpulkan bahwa metode machine learning dapat digunakan sebagai alat untuk memprediksi potensi seseorang mengidap diabetes secara efisien dan akurat. Prediktor yang digunakan adalah data pasien, seperti usia, indeks massa tubuh (BMI), kadar glukosa darah, serta riwayat kesehatan lainnya. Algoritma klasifikasi yaitu K-Nearest Neighbor (KNN) dan Random Forest digunakan untuk membandingkan performa model dalam mengklasifikasikan data. 
 
-Model KNN dan Random Forest sama-sama memiliki akurasi yang tinggi.  Meskipun demikian, berdasarkan evaluasi, model Random Forest menunjukkan performa yang lebih baik, terutama pada aspek akurasi, recall, dan F1-score, khususnya dalam mengidentifikasi pasien dengan diabetes. Keunggulan ini menjadikan Random Forest lebih layak untuk diterapkan dalam upaya deteksi dini penyakit ini.
+- Model KNN dan Random Forest sama-sama memiliki akurasi yang tinggi.  Meskipun demikian, berdasarkan evaluasi, model Random Forest menunjukkan performa yang lebih baik, terutama pada aspek akurasi, recall, dan F1-score khususnya dalam mengidentifikasi pasien dengan diabetes. Keunggulan ini menjadikan Random Forest lebih layak untuk diterapkan dalam upaya deteksi dini penyakit ini.
 
-Dapat disimpulkan bahwa Random Forest dapat menjadi model terbaik untuk memprediksi potensi diabetes karena mampu memberikan hasil yang lebih akurat.
+- Dapat disimpulkan bahwa Random Forest dapat menjadi model terbaik untuk memprediksi potensi diabetes karena mampu memberikan hasil yang lebih akurat.
