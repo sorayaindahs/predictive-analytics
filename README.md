@@ -728,7 +728,7 @@ Kelebihan:
 
 Kelemahan:
 
-Model ini masih menghasilkan sejumlah false negative yang cukup signifikan, sehingga belum sepenuhnya optimal untuk kebutuhan deteksi dini.
+Model ini masih menghasilkan sejumlah false negative yang cukup signifikan.
 
 ## Kesimpulan
 
