@@ -35,15 +35,15 @@ Yunita, R., & Zulfian, L. (2021). Penerapan Algoritma Random Forest Dalam Klasif
 
 - Menentukan model terbaik dalam memprediksi diabetes.
 
-    ### Solution statements
+ ### Solution statements
 
-    - **Membangun model dengan algoritma K-Nearest Neighbor**
-    
-     Algoritma KNN menggunakan pendekatan jarak untuk mengklasifikasikan seseorang ke dalam kategori berisiko atau tidak berisiko diabetes berdasarkan kemiripan data kondisi kesehatan yang dimiliki. Model ini akan diuji menggunakan nilai n_neighbor yang optimal. Evaluasi performa dilakukan menggunakan metrik seperti akurasi, precision, recall, dan F1-score, untuk mengukur seberapa baik performal model dalam memprediksi diabetes.
+- **Membangun model dengan algoritma K-Nearest Neighbor**
 
-    - **Membangun model dengan algoritma Random Forest**
-      
-    Algoritma Random Forest digunakan untuk memprediksi risiko diabetes dengan menggabungkan hasil dari sejumlah pohon keputusan. Model ini akan dievaluasi berdasarkan kombinasi parameter seperti n_estimators dan max_depth. Sana halnya dengan model KNN, evaluasi performa dilakukan menggunakan metrik seperti akurasi, precision, recall, dan F1-score, untuk mengukur seberapa baik performal model dalam memprediksi diabetes.
+Algoritma KNN menggunakan pendekatan jarak untuk mengklasifikasikan seseorang ke dalam kategori berisiko atau tidak berisiko diabetes berdasarkan kemiripan data kondisi kesehatan yang dimiliki. Model ini akan diuji menggunakan nilai n_neighbor yang optimal. Evaluasi performa dilakukan menggunakan metrik seperti akurasi, precision, recall, dan F1-score, untuk mengukur seberapa baik performal model dalam memprediksi diabetes.
+
+ - **Membangun model dengan algoritma Random Forest**
+
+Algoritma Random Forest digunakan untuk memprediksi risiko diabetes dengan menggabungkan hasil dari sejumlah pohon keputusan. Model ini akan dievaluasi berdasarkan kombinasi parameter seperti n_estimators dan max_depth. Sana halnya dengan model KNN, evaluasi performa dilakukan menggunakan metrik seperti akurasi, precision, recall, dan F1-score, untuk mengukur seberapa baik performal model dalam memprediksi diabetes.
 
 ## Data Understanding
 Data yang digunakan dalam penelitian ini berasal dari Kaggle dengan judul “Diabetes Prediction Dataset” yang tersedia di tautan:
@@ -52,7 +52,7 @@ https://www.kaggle.com/datasets/iammustafatz/diabetes-prediction-dataset/data
 
 Dataset ini berisi beberapa kondisi kesehatan pasien/indikator yang dapat digunakan untuk memprediksi apakah individu memiliki diabetes.
 
-### Variabel-variabel pada Restaurant UCI dataset adalah sebagai berikut:
+### Variabel-variabel Prediksi Diabetes
 
 **Variabel prediktor**
 
@@ -345,7 +345,7 @@ Membagi fitur menjadi 2 bagian
 numerical_features = ['age', 'bmi', 'HbA1c_level', 'blood_glucose_level']
 categorical_features = ['gender', 'hypertension', 'heart_disease', 'smoking_history', 'diabetes']
 ```
-##### Categorical Features
+#### Categorical Features
 **gender**
 ```
 feature = categorical_features[0]
@@ -495,7 +495,7 @@ sns.pairplot(diabetes_df[numerical_features + ['diabetes']], hue='diabetes', dia
 plt.show()
 
 ```
-![alt text](image-7.png)
+![Multivariate_num](https://github.com/sorayaindahs/predictive-analytics/blob/main/Screenshot%202025-05-23%20122429.png?raw=true)
 - age: Distribusi usia pasien penderita diabetes cenderung lebih tinggi di usia dewasa-tua, dibandingkan dengan yang tidak diabetes yang tersebar lebih luas, termasuk usia muda.
 - bmi: Distribusi bmi terlihat tidak jauh berbeda antara dua kelas, tetapi persebaran pasien yang memiliki diabetes sedikit lebih padat di rentang bmi > 25 (overweight/obesitas).
 - HbA1c_level: Perbedaan sangat signifikan, pasien penderita diabetes dominan pada nilai HbA1c di atas 6.5, sedangkan non-diabetes lebih banyak di bawah 6.5. Hal ini relevan secara medis.
