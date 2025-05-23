@@ -52,29 +52,6 @@ https://www.kaggle.com/datasets/iammustafatz/diabetes-prediction-dataset/data
 
 Dataset ini berisi beberapa kondisi kesehatan pasien/indikator yang dapat digunakan untuk memprediksi apakah individu memiliki diabetes.
 
-### Variabel-variabel Prediksi Diabetes
-
-**Variabel prediktor**
-
-`gender`: jenis kelamin responden
-
-`age`: usia responden (dalam tahun)
-
-`hypertension`:  hipertensi (0 = tidak, 1 = ya)
-
-`heart_disease`:  penyakit jantung (0 = tidak, 1 = ya)
-
-`smoking_history`:  merokok responden
-
-`bmi`: indeks massa tubuh responden
-
-`HbA1c_level`: kadar HbA1c (hemoglobin terglikasi)
-
-`blood_glucose_level`: kadar glukosa darah saat pemeriksaan
-
-**Variabel Target**
-
-`diabetes`: status diabetes responden (0 = tidak, 1 = ya) 
 
 ## Data Preprocessing
 ### Load Dataset
@@ -110,6 +87,28 @@ Data columns (total 9 columns):
     8   diabetes             100000 non-null  int64
 
 ### Deskripsi Variabel
+
+*Variabel prediktor**
+
+`gender`: jenis kelamin responden
+
+`age`: usia responden (dalam tahun)
+
+`hypertension`:  hipertensi (0 = tidak, 1 = ya)
+
+`heart_disease`:  penyakit jantung (0 = tidak, 1 = ya)
+
+`smoking_history`:  merokok responden
+
+`bmi`: indeks massa tubuh responden
+
+`HbA1c_level`: kadar HbA1c (hemoglobin terglikasi)
+
+`blood_glucose_level`: kadar glukosa darah saat pemeriksaan
+
+**Variabel Target**
+
+`diabetes`: status diabetes responden (0 = tidak, 1 = ya) 
 
 - Dataset memiliki 3 kolom dengan tipe object, yaitu gender dan smoking_history. Kolom ini termasuk kategorik (fitur non-numerik).
 - Terdapat 3 kolom numerik dengan tipe data float64 yaitu age, bmi, dan HbA1c_level.
@@ -161,7 +160,7 @@ diabetes_df.describe()
 - Rata-rata pasien memiliki glukosa darah 138.06 mg/dL.
 - Sekitar 75% responden memiliki glukosa darah 159 mg/dL.
 
-#### Menangani Missing Value
+### Menangani Missing Value
 Mengidentifikasi jumlah kolom yang tidak memiliki nilai
 
 ```
@@ -203,7 +202,7 @@ Nilai 0 di kolom blood_glucose_level ada:  0
 
 Berdasarkan identifikasi, tidak ada missing value yang harus ditangani.
 
-#### Menangani Outlier
+### Menangani Outlier
 
 **gender**
 ```
@@ -450,7 +449,7 @@ Terdapat 2 kategori dalam fitur diabetes, yaitu 0 (tidak memiliki penyakit diabe
 diabetes_df.hist(bins=50, figsize=(20,15))
 plt.show()
 ```
-![Histogram Fitur Numerik](https://github.com/sorayaindahs/predictive-analytics/blob/main/Screenshot%202025-05-23%20113001.png?raw=true)
+[alt text](image-6.png)
 
 Histogram di atas menunjukkan bahwa:
 - Distribusi usia cukup merata dari usia 0 sampai 80 tahun dan memperlihatkan bahwa sebagian besar pasien berada di usia produktif dan lansia. Terjadi lonjakan di usia 80 tahun.
@@ -458,7 +457,7 @@ Histogram di atas menunjukkan bahwa:
 - Distribusi HbA1c tidak berbentuk normal dan terjadi lonjakan di sekitar angka 6.
 - blood_glucose_level tersebar dari sekitar 70 hingga hampir 300, tetapi dengan dominasi jumlah sampel pada angka-angka tertentu. Terjadi lonjakan besar pada nilai sekitar 155.
 
-#### Multivariate Analysis
+### Multivariate Analysis
 ```
 cat_features = diabetes_df.select_dtypes(include='object').columns.difference(['diabetes']).to_list()
 for col in cat_features:
@@ -468,7 +467,7 @@ for col in cat_features:
     plt.tight_layout()
     plt.show()
     ```
-![alt text](image-6.png)
+![Histogram Fitur Numerik](https://github.com/sorayaindahs/predictive-analytics/blob/main/Screenshot%202025-05-23%20113001.png?raw=true)
 
 **gender**
 - Mayoritas pasien memiliki gender Female.
