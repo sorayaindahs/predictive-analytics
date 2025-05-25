@@ -50,10 +50,8 @@ Data yang digunakan dalam penelitian ini berasal dari Kaggle dengan judul “Dia
 
 https://www.kaggle.com/datasets/iammustafatz/diabetes-prediction-dataset/data
 
-Dataset ini berisi beberapa kondisi kesehatan pasien/indikator yang dapat digunakan untuk memprediksi apakah individu memiliki diabetes.
+Dataset ini berisi beberapa kondisi kesehatan pasien/indikator yang dapat digunakan untuk memprediksi apakah individu memiliki diabetes. Berikut ini merupakan beberapa informasi terkait dataset yang digunakan.
 
-
-## Data Preprocessing
 ### Load Dataset
 
 ```
@@ -86,6 +84,12 @@ diabetes_df
  
     8   diabetes             100000 non-null  int64
 
+Diabetes Prediction Dataset memiliki 100000 baris dan 9 kolom
+
+- Dataset memiliki 3 kolom dengan tipe object, yaitu gender dan smoking_history. Kolom ini termasuk kategorik (fitur non-numerik).
+- Terdapat 3 kolom numerik dengan tipe data float64 yaitu age, bmi, dan HbA1c_level.
+- Terdapat 4 kolom numerik dengan tipe data int64, yaitu hypertension, heart_disease, blood_glucose_level, dan diabetes.
+
 ### Deskripsi Variabel
 
 **Variabel prediktor**
@@ -109,10 +113,6 @@ diabetes_df
 **Variabel Target**
 
 `diabetes`: status diabetes responden (0 = tidak, 1 = ya) 
-
-- Dataset memiliki 3 kolom dengan tipe object, yaitu gender dan smoking_history. Kolom ini termasuk kategorik (fitur non-numerik).
-- Terdapat 3 kolom numerik dengan tipe data float64 yaitu age, bmi, dan HbA1c_level.
-- Terdapat 4 kolom numerik dengan tipe data int64, yaitu hypertension, heart_disease, blood_glucose_level, dan diabetes.
 
 ### Mengubah tipe data kolom hypertension, heart_disease, dan diabetes menjadi object
 
@@ -161,7 +161,7 @@ diabetes_df.describe()
 - Rata-rata pasien memiliki glukosa darah 138.06 mg/dL.
 - Sekitar 75% responden memiliki glukosa darah 159 mg/dL.
 
-### Menangani Missing Value
+### Mengidentifikasi Missing Value
 Mengidentifikasi jumlah kolom yang tidak memiliki nilai
 
 ```
@@ -203,7 +203,7 @@ print("Nilai 0 di kolom blood_glucose_level ada: ", blood_glucose_level)
 
 Berdasarkan identifikasi, tidak ada missing value yang harus ditangani.
 
-### Menangani Outlier
+### Identifikasi Outlier
 
 **Fitur gender**
 ```
