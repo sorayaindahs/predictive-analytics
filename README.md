@@ -394,7 +394,8 @@ Histogram di atas menunjukkan bahwa:
 ---------------------------------------------
 
 3) Berdasarkan exploratory data pada fitur age yang telah dilakukan, berikut jumlah data pada fitur age setelah kategori bmi > 60 dihapus.
-(((((((((((((((output bmi)))))))))))))))
+![bmi](https://github.com/user-attachments/assets/09d06df5-9a87-4fa6-86d1-d9b749c4d43a)
+
 Menghapus bmi > 60
 
 -------------------------------------------
