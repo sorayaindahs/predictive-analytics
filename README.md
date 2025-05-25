@@ -15,8 +15,6 @@ Sholeh, M., Andayati, D., & Rachmawati, R. Y. (2022). Data mining model klasifik
 
 Yunita, R., & Zulfian, L. (2021). Penerapan Algoritma Random Forest Dalam Klasifikasi Penyakit Diabetes Mellitus. Jurnal Farmasi Klinik, 7(2), 105–110. Retrieved from https://e-journal.polkesraya.ac.id/index.php/jfk/article/download/229/100/424.
 
--------------------------------------------------------
-
 ## Business Understanding
 ### Problem Statements
 - Bagaimana cara memprediksi potensi diabetes pada individu secara efisien dan akurat berdasarkan data kondisi kesehatan pasien menggunakan teknologi berbasis machine learning?
@@ -35,13 +33,11 @@ Yunita, R., & Zulfian, L. (2021). Penerapan Algoritma Random Forest Dalam Klasif
 ### Solution statements
 - **Membangun model dengan algoritma K-Nearest Neighbor untuk Prediksi Diabetes**
 
-Algoritma KNN menggunakan pendekatan jarak untuk mengklasifikasikan seseorang ke dalam kategori berisiko atau tidak berisiko diabetes berdasarkan kemiripan data kondisi kesehatan yang dimiliki. Model ini akan diuji menggunakan nilai n_neighbor yang optimal. Evaluasi performa dilakukan menggunakan metrik seperti akurasi, precision, recall, dan F1-score, untuk mengukur seberapa baik performal model dalam memprediksi diabetes.
+Algoritma KNN menggunakan pendekatan jarak untuk mengklasifikasikan seseorang ke dalam kategori berisiko atau tidak berisiko diabetes berdasarkan kemiripan data kondisi kesehatan yang dimiliki. Model ini akan diuji menggunakan nilai n_neighbor yang optimal. Evaluasi performa dilakukan menggunakan metrik seperti akurasi, precision, recall, dan F1-score, untuk mengukur seberapa baik performa model dalam memprediksi diabetes.
 
 - **Membangun model dengan algoritma Random Forest untuk Prediksi Diabetes**
 
-Algoritma Random Forest digunakan untuk memprediksi risiko diabetes dengan menggabungkan hasil dari sejumlah pohon keputusan. Model ini akan dievaluasi berdasarkan kombinasi parameter seperti n_estimators dan max_depth. Sana halnya dengan model KNN, evaluasi performa dilakukan menggunakan metrik seperti akurasi, precision, recall, dan F1-score, untuk mengukur seberapa baik performal model dalam memprediksi diabetes.
-
------------------------------------------------------------
+Algoritma Random Forest digunakan untuk memprediksi risiko diabetes dengan menggabungkan hasil dari sejumlah pohon keputusan. Model ini akan dievaluasi berdasarkan kombinasi parameter seperti n_estimators dan max_depth. Sana halnya dengan model KNN, evaluasi performa dilakukan menggunakan metrik seperti akurasi, precision, recall, dan F1-score, untuk mengukur seberapa baik performa model dalam memprediksi diabetes.
 
 ## Data Understanding
 Data yang digunakan dalam penelitian ini berasal dari Kaggle dengan judul “Diabetes Prediction Dataset” yang tersedia di tautan:
@@ -82,8 +78,6 @@ Diabetes Prediction Dataset memiliki **100000 baris** dan **9 kolom**.
 - Terdapat 3 kolom numerik dengan tipe data float64 yaitu age, bmi, dan HbA1c_level.
 - Terdapat 4 kolom numerik dengan tipe data int64, yaitu hypertension, heart_disease, blood_glucose_level, dan diabetes.
 
------------------------------------------------------------
-
 ### Deskripsi Variabel
 **Variabel prediktor**
 
@@ -107,28 +101,26 @@ Diabetes Prediction Dataset memiliki **100000 baris** dan **9 kolom**.
 
 `diabetes`: status diabetes responden (0 = tidak, 1 = ya)
 
------------------------------------------------------------
-
 ### Cek Summary
 Summary dilakukan pada data numerik saja, sehingga kolom heypertension, heart_disease, dan diabetes yang masih bertipe float64 perlu diubah ke object terlebih dahulu karena merupakan kolom yang berisi kategori (0=tidak dan 1=ya).
 
-            age	             bmi       	HbA1c_level	      blood_glucose_level
+                  age	             bmi            	 HbA1c_level	  blood_glucose_level
 
-    count	 100000.000000	100000.000000	100000.000000	100000.000000
+    count	 100000.000000	       100000.000000	    100000.000000	    100000.000000
 
-    mean	  41.885856	    27.320767	     5.527507	     138.058060
+    mean	   41.885856	          27.320767	         5.527507	        138.058060
 
-    std	   22.516840    	6.636783      	1.070672	     40.708136
+    std	       22.516840    	       6.636783      	 1.070672	         40.708136
 
-    min   	0.080000     	10.010000	     3.500000	     80.000000
+    min         0.080000     	      10.010000	         3.500000	         80.000000
 
-    25%	   24.000000    	23.630000     	4.800000     	100.000000
+    25%	       24.000000              23.630000          4.800000           100.000000
 
-    50%   	43.000000    	27.320000    	 5.800000	     140.000000
+    50%        43.000000    	      27.320000    	     5.800000	        140.000000
 
-    75%   	60.000000	    29.580000     	6.200000     	159.000000
+    75%   	   60.000000	          29.580000     	 6.200000           159.000000
 
-    max   	80.000000	    95.690000     	9.000000     	300.000000
+    max        80.000000	          95.690000     	 9.000000           300.000000
 
 `age` (usia)
 - Rata-rata usia pasien: 41.89 tahun dengan rentang 0.08 sampai 80 tahun.
@@ -146,8 +138,6 @@ Summary dilakukan pada data numerik saja, sehingga kolom heypertension, heart_di
 `blood_glucose_level` (glukosa darah)
 - Rata-rata pasien memiliki glukosa darah 138.06 mg/dL.
 - Sekitar 75% responden memiliki glukosa darah 159 mg/dL.
-
-----------------------------------------------------------
 
 ### Identifikasi Missing Value
 **Identifikasi missing value setiap kolom**
@@ -170,7 +160,7 @@ Summary dilakukan pada data numerik saja, sehingga kolom heypertension, heart_di
 
     diabetes	0
 
-Secara keseluruhan, tidak terdapat kolom yang memiliki missing valu, namun perlu diidentifikasi lebih lanjut terutama pada kolom yang memiliki tipe data float64
+Secara keseluruhan, tidak terdapat kolom yang memiliki missing value, namun perlu diidentifikasi lebih lanjut terutama pada kolom yang memiliki tipe data float64
 
 **Mengidentifikasi kolom age, HbA1c_level, dan blood_glucose_level (float64) yang memiliki nilai 0**
 
@@ -184,14 +174,12 @@ Kolom age, HbA1c_level, dan blood_glucose_level memiliki tipe data float64 dan t
 
 Berdasarkan identifikasi, tidak ada missing valuepada kolom age, HbA1c_level, dan blood_glucose_level yang harus ditangani.
 
------------------------------------------------------------
-
 **Identifikasi Duplikasi Data**
-np.int64(4055)
+    
+    np.int64(4055)
 
 Kode tersebut menunjukkan bahwa dataset memiliki duplikasi sebanyak 4055 baris yang harus dibersihkan.
 
------------------------------------------------------------
 ### Univariate Exploratory Data Analysis
 Pada tahap ini akan mengidentifikasi missing value dan outlier atau unique pada setiap fitur.
 
@@ -209,7 +197,7 @@ Berdasarkan identifikasi, terlihat bahwa kolom gender berisi 3 kategori, yaitu F
 
 **Fitur age**
 
-    age	    count
+    age	     count
 
     80.00	  5621
 
@@ -217,21 +205,21 @@ Berdasarkan identifikasi, terlihat bahwa kolom gender berisi 3 kategori, yaitu F
 
     47.00	  1572
 
-    48.00  	1568
+    48.00  	  1568
 
-    49.00  	1541
+    49.00     1541
 
-    ...	    ...
+    ...	       ...
 
-    0.48   	83
+    0.48        83
 
-    1.00   	83
+    1.00   	    83
 
-    0.40	   66
+    0.40	    66
 
-    0.16   	59
+    0.16   	    59
 
-    0.08  	36
+    0.08  	    36
 
 Berdasarkan identifikasi, terlihat bahwa terdapat beberapa usia yang tidak sesuai, seperti dalam bentuk desimal. Oleh karena itu, perlu dibersihkan untuk mempermudah analisis dan tidak menimbulkan bias.
 
@@ -266,40 +254,42 @@ Terdapat 2 kategori dalam fitur heart_disease, yaitu 0 (tidak memiliki penyakit 
 
 **Fitur smoking_history**
 
-*Fitur smoking_history**
+    **Fitur smoking_history**
 
     count
 
     smoking_history	
 
-    never	35055
+    never	    35055
 
-    No Info	34946
+    No Info   	34946
 
-    former	9352
+    former	     9352
 
-    current	9285
+    current	     9285
 
-    not current	6430
+    not current	 6430
 
-    ever	4003
+    ever	     4003
 
 Berdasarkan identifikasi, kolom smoking_history berisi 6 kategori, yaitu No Info, never, former, current, not current, dan ever. Untuk mempermudah analisis, sebaiknya dikategorikan lagi menjadi never (tidak pernah merokok), ever (pernah tapi sudah tidak merokok), dan current (saat ini perokok). Untuk former dan not current dapat dikategorikan ke ever karena sama-sama pernah merokok, tetapi saat ini sudah tidak merokok. Selanjutnya, kategori No Info sebanyak 34946 dipertahankan agar tidak menghilangkan banyak informasi karena frekuensinya yang sangat besar.
 
 **Fitur bmi**
 
-![Boxplot BMI](https://github.com/sorayaindahs/predictive-analytics/blob/main/Screenshot%202025-05-23%20112709.png?raw=true)
+![image](https://github.com/user-attachments/assets/caa8e6db-e8a8-4f58-af65-db484c8e02e3)
 
 bmi > 60 perlu dihapus karena di luar batas maksimal dan tidak relevan secara medis pada umumnya.
 
 **Fitur HbA1c_level**
 
-![Boxplot HbA1c_level](https://github.com/sorayaindahs/predictive-analytics/blob/main/Screenshot%202025-05-23%20112750.png?raw=true)
+![image](https://github.com/user-attachments/assets/c587af19-0a31-4f04-aeaf-5d182c06d62f)
+
 Terlihat bahwa kolom HbA1c_level memiliki banyak outliers, namun tidak perlu dihapus karena angka tersebut masih relevan secara medis.
 
 **Fitur blood_glucose_level**
 
-![Boxplot blood_glucose_level](https://github.com/sorayaindahs/predictive-analytics/blob/main/Screenshot%202025-05-23%20112835.png?raw=true)
+![image](https://github.com/user-attachments/assets/a1934655-bbb0-4cb4-b729-d6c9f0aee52d)
+
 
 Terlihat bahwa kolom blood_glucose_level memiliki banyak outliers, namun tidak perlu dihapus karena angka tersebut masih relevan secara medis.
 
@@ -313,13 +303,14 @@ Terlihat bahwa kolom blood_glucose_level memiliki banyak outliers, namun tidak p
 
     1                  8444         8.9
 
-Output dari kode di atas menunjukkan bahwa kolom diabetes tidak memiliki outlier karena kategori sesuai, yaitu 0 (tidak memiliki penyakit diabetes) dan 1 (memiliki penyakit diabetes).
+Output di atas menunjukkan bahwa kolom diabetes tidak memiliki outlier karena kategori sesuai, yaitu 0 (tidak memiliki penyakit diabetes) dan 1 (memiliki penyakit diabetes).
 
 Terdapat 2 kategori dalam fitur diabetes, yaitu 0 (tidak memiliki penyakit diabetes) dan 1 (memiliki penyakit diabetes). Sebesar 91.1% pasien tidak memiliki penyakit diabetes dan 8.9% pasien memiliki penyakit diabetes.
 
 **Histogram Fitur Numerik (age, bmi, HbA1c_level, dan blood_glucose_level)**
 
-![Multivariate_num](https://github.com/sorayaindahs/predictive-analytics/blob/main/Screenshot%202025-05-23%20122429.png?raw=true)
+![image](https://github.com/user-attachments/assets/50492595-c791-4163-8fc1-98a2c6055e24)
+
 
 Histogram di atas menunjukkan bahwa:
 - Distribusi usia cukup merata dari usia 0 sampai 80 tahun dan memperlihatkan bahwa sebagian besar pasien berada di usia produktif dan lansia. Terjadi lonjakan di usia 80 tahun.
@@ -327,12 +318,11 @@ Histogram di atas menunjukkan bahwa:
 - Distribusi HbA1c tidak berbentuk normal dan terjadi lonjakan di sekitar angka 6.
 - blood_glucose_level tersebar dari sekitar 70 hingga hampir 300, tetapi dengan dominasi jumlah sampel pada angka-angka tertentu. Terjadi lonjakan besar pada nilai sekitar 155.
 
------------------------------------------------------------
-
 ### Multivariate Exploratory Data Analysis
 **Berikut merupakan Histogram Fitur Kategorik.**
 
-[Histogram Fitur Kategorik](https://github.com/sorayaindahs/predictive-analytics/blob/main/Screenshot%202025-05-23%20113001.png?raw=true)
+![image](https://github.com/user-attachments/assets/ec38678c-1b44-448b-bf07-b14ccf0d102b)
+
 
 **gender**
 - Mayoritas pasien memiliki gender Female.
@@ -354,10 +344,9 @@ Histogram di atas menunjukkan bahwa:
 - Total pasien yang saat ini perokok lebih kecil dibanding kategori lain dan jumlah penderita diabetes pada kategori ini tidak berbeda signifikan/proporsi sebanding dengan total pasien yang saat ini perokok.
 - Total pasien yang pernah tapi sudah tidak merokok lebih tinggi dibanding kategori current dan lebih rendah dibanding kategori lain. Jumlah penderita diabetes pada kategori ini tidak berbeda signifikan/proporsi sebanding dengan total pasien yang pernah tapi sudah tidak merokok.
 
---------------------------------------------------------------
 **Berikut merupakan Histogram Fitur numerik.**
 
-![Multivariate_num](https://github.com/sorayaindahs/predictive-analytics/blob/main/Screenshot%202025-05-23%20122429.png?raw=true)
+![image](https://github.com/user-attachments/assets/06671e36-ea8a-4410-b719-d513d82e9b5a)
 
 - age: Distribusi usia pasien penderita diabetes cenderung lebih tinggi di usia dewasa-tua, dibandingkan dengan yang tidak diabetes yang tersebar lebih luas, termasuk usia muda.
 - bmi: Distribusi bmi terlihat tidak jauh berbeda antara dua kelas, tetapi persebaran pasien yang memiliki diabetes sedikit lebih padat di rentang bmi > 25 (overweight/obesitas).
@@ -371,10 +360,8 @@ Histogram di atas menunjukkan bahwa:
 
 - bmi vs fitur lainnya: Tidak ada korelasi kuat, tapi ada kecenderungan penderita diabetes muncul lebih banyak di BMI tinggi.
 
------------------------------------------------------------------
-
 ## Data preparation
-### Membersihkan Missing Value, Outlier, ataau Data yang Tidak Relevan
+### Membersihkan Missing Value, Outlier, atau Data yang Tidak Relevan
 1) Berdasarkan exploratory data pada fitur gender yang telah dilakukan, berikut jumlah data pada fitur gender setelah kategori Other dihapus.
 
                    jumlah sampel  persentase
@@ -385,20 +372,15 @@ Histogram di atas menunjukkan bahwa:
 
        Male            39386        41.5
 
-----------------------------------------------
-
 2) Berdasarkan exploratory data pada fitur age yang telah dilakukan, berikut boxplot age setelah menghapus beberapa nilai yang tidak sesuai.
 
-![Boxplot age](https://github.com/sorayaindahs/predictive-analytics/blob/main/Screenshot%202025-05-23%20112523.png?raw=true)
+![image](https://github.com/user-attachments/assets/5b068d50-89b0-4bb9-9eef-0ee6acb656f7)
 
----------------------------------------------
 
 3) Berdasarkan exploratory data pada fitur age yang telah dilakukan, berikut jumlah data pada fitur age setelah kategori bmi > 60 dihapus.
-![bmi](https://github.com/user-attachments/assets/09d06df5-9a87-4fa6-86d1-d9b749c4d43a)
 
-Menghapus bmi > 60
+![image](https://github.com/user-attachments/assets/ee74782e-f6f3-4da3-97c9-90bb951d4796)
 
--------------------------------------------
 
 ### Mengubah Kategori
 
@@ -419,11 +401,12 @@ jumlah sampel  persentase
 Terdapat 4 kategori dalam fitur smoking_history, yaitu never (tidak pernah merokok), No Info (tidak memberi informasi), ever (pernah tapi sudah tidak merokok), dan current (saat ini perokok). Sebanyak 36.1% pasien tidak pernah merokok, sebanyak 33.7% pasien tidak memberikan informasi, sebanyak 20.5% pasien pernah tapi sudah berhenti merokok, dan 9.7% pasien saat ini perokok.
 
 ### Menghapus Duplikasi Data
-Berdasarkan identifikasi duplikasi data, terdapat duplikasi sebanyak 4055 baris yang harus dibersihkan. Setelah dibersihkan jumlah baris menjadi sebanyak((((((((((((()))))))))))))
+Berdasarkan identifikasi duplikasi data, terdapat duplikasi sebanyak 4055 baris yang harus dibersihkan. Setelah dibersihkan jumlah baris menjadi sebanyak 94900 baris
 
 ### Cek Korelasi
 
- (((((((((((((((insert gambar korelasi)))))))))))))))
+![image](https://github.com/user-attachments/assets/f40fe124-413c-4671-93df-29220d76dc1a)
+
 
 Fitur `age` memiliki korelasi 0.26. Hal ini menunjukkan korelasi lemah positif. Usia lebih tua sedikit meningkatkan kemungkinan diabetes.
 
@@ -433,34 +416,32 @@ Fitur `HbA1c_level` memiliki korelasi 0.41. Hal ini menunjukkan korelasi moderat
 
 Fitur `blood_glucose_level` memiliki korelasi 0.42. Hal ini menunjukkan korelasi moderat positif. Kadar glukosa darah tinggi cukup kuat berkaitan dengan diabetes.
 
------------------------------------------------------------------
-
 ### Encoding Fitur Kategori
 Proses encoding variabel kategorikal menggunakan LabelEncoder untuk mengubah data teks menjadi format numerik yang dapat diproses saat membuat model. Kolom seperti smoking_history, gender, hypertension, heart_disease, dan diabetes diubah nilainya menjadi angka sesuai urutan kategorinya.
 
           gender	  age	hypertension	heart_disease	smoking_history	...	...	...	diabetes
 
-     0	    0	        80	    0	            1	                3			                 	0
+     0	    0	        80	    0	            1	                3			          	0
 
-     1	    0	        54	    0	            0	                0		          	       	0
+     1	    0	        54	    0	            0	                0		          	  	0
 
-     2	    1	        28	    0	            0	                3		                   0
+     2	    1	        28	    0	            0	                3		                0
+     
+     3	    0        	36	    0	            0	                1				        0
 
-     3	    0        	36	    0	            0	                1				                 0
-
-     4	    1        	76	    1	            1	                1				                 0
+     4	    1        	76	    1	            1	                1				        0
 
     ...	   ...      	...	   ...	         ...	               ...	  ...	...	...	   ...
 
-    99994	 0        	36	    0	            0	                0			                  0
+    99994	 0        	36	    0	            0	                0			            0
 
-    99996	 0        	2	     0	            0	                0			                  0
+    99996	 0        	2	     0	            0	                0			            0
 
-    99997	 1	        66	    0	            0	                2			                  0
+    99997	 1	        66	    0	            0	                2			            0
 
-    99998	 0	        24	    0	            0	                3			                  0
+    99998	 0	        24	    0	            0	                3			            0
 
-    99999	 0	        57	    0	            0	                1		                   0
+    99999	 0	        57	    0	            0	                1		                0
 
 ### Train-Test-Split
 Sebelum melakukan pemodelan, data dibagi menjadi data training sebanyak 80% dan data testing sebanyak 20% yang bertujuan agar model yang dilatih dapat memelajari pola pada data training dan menghasilkan performa yang baik.
@@ -468,23 +449,21 @@ Sebelum melakukan pemodelan, data dibagi menjadi data training sebanyak 80% dan 
 ### Standarisasi
 Standarisasi diterapkan pada fitur numerik menggunakan StandardScaler yang bertujuan untuk mengubah skala data agar memiliki rata-rata 0 dan standar deviasi 1. Hal ini dapat menyeimbangkan skala antarfitur.
 
-                    age	          bmi	      HbA1c_level	blood_glucose_level
+                        age	          bmi	   HbA1c_level 	 blood_glucose_level
 
-            11222	 0.127926	   -0.007486   	0.248233	     0.410090
+            11222	 0.127926	  -0.007486   	0.248233	     0.410090
 
-            7650	  -1.626807	  -0.007486	   0.155066	     0.507701
+            7650    -1.626807	  -0.007486	    0.155066	     0.507701
 
-            58754	  1.072783	   2.585249	   0.434567	     0.410090
+            58754	 1.072783	   2.585249	    0.434567	     0.410090
 
-            51644	 -1.851772	  -1.879173	   0.620902     	0.044048
+            51644	-1.851772	  -1.879173	    0.620902     	 0.044048
 
-            23913	 1.342742	   -0.007486	   0.155066     	0.483298
+            23913	 1.342742	  -0.007486     0.155066     	 0.483298
 
 - Nilai mean untuk fitur numerik (age, bmi, HbA1c_level, blood_glucose_level) sangat mendekati 0.
 - Nilai st deviasi semua fitur tersebut adalah 1.000007, yang sangat dekat dengan 1.
 - Ketidaksempurnaan (tidak bulat 0 dan 1) disebabkan oleh beberapa presisi dalam komputasi.
-
----------------------------------------------------------------
 
 ## Model Development: K-Nearest Neighbor
 Sebelum membangun model, perlu meenyiapkan data frame untuk analisis kedua model tersebut lebih dahulu.
@@ -494,7 +473,8 @@ models = pd.DataFrame(index=['train_acc', 'test_acc'],
 ```
 Selanjutnya, melatih data dengan KNN. Sebelum membuat model, perlu diketahui nilai neighbor terbaik.
 
-![Grafik k](https://github.com/sorayaindahs/predictive-analytics/blob/main/Screenshot%202025-05-23%20125054.png?raw=true)
+![image](https://github.com/user-attachments/assets/a14df036-9ac6-4867-9581-76298e1c7dbe)
+
 
 Nilai k terbaik: 17
 
@@ -539,7 +519,6 @@ Untuk memprediksi hasil pada data latih.
 
 Curse of Dimensionality, yaitu saat jumlah fitur (dimensi) bertambah banyak, semua data cenderung memiliki jarak sama, sehingga konsep tetangga terdekat sulit dianalisis.
 
----------------------------------------------------------
 ## Model Development: Random Forest
 
 ```
@@ -579,7 +558,6 @@ y_pred_test_rf = rf_model.predict(X_test)
 - Kurang interpretatif karena terlalu banyak pohon, sehingga sulit dipahami.
 - Membutuhkan waktu lebih lama karena training banyak pohon.
 
--------------------------------------------------------------
 
 ## Evaluasi
 
@@ -623,7 +601,7 @@ Berdasarkan output evaluasi menggunakan beberapa metrik untuk model KNN, dapat d
 - Meskipun nilai presisi tinggi, recall untuk kelas 1 hanya mencapai 57% yang artinya model masih sering gagal mengenali pasien yang sebenarnya mengidap diabetes, masih terdapat 730 kasus false negative.
 
 - Nilai F1-score kelas 1 cukup rendah, yaitu 72%. Hal ini juga mencerminkan bahwa keseimbangan antara precision dan recall masih belum optimal.
-----------------------------------------------------------
+
 **Random Forest**
     Random Forest Classification Report (Test):
 
@@ -635,9 +613,9 @@ Berdasarkan output evaluasi menggunakan beberapa metrik untuk model KNN, dapat d
 
     accuracy                           0.97     18980
 
-    macro avg       0.97      0.84      0.89     18980
+    macro avg       0.97      0.84     0.89     18980
 
-    weighted avg       0.97      0.97      0.97     18980
+    weighted avg     0.97     0.97     0.97     18980
 
     Random Forest Confusion Matrix (Test):
 
@@ -654,7 +632,6 @@ Berdasarkan output evaluasi menggunakan beberapa metrik untuk model Random Fores
 - Model ini masih menghasilkan sejumlah false negative yang cukup signifikan.
 
 - Dapat disimpulkan bahwa Random Forest memiliki performa lebih baik secara keseluruhan untuk melakukan prediksi penyakit diabetes dibandingkan dengan model KNN.
--------------------------------------------------------------
 
 **Keterkaitan dengan Business Understanding**
 
@@ -667,7 +644,7 @@ Oleh karena itu, model yang dibangun telah mencapai goal, yaitu mampu membangun 
 
 *Bagaimana membandingkan performa KNN vs Random Forest?*
 
-Perbandingan performa dilakukan melalui evaluasi dengan metrik (accuracy, precision, recall, dan f1-score.) klasifikasi dan confusion matrix.
+Perbandingan performa dilakukan melalui evaluasi dengan metrik klasifikasi (accuracy, precision, recall, dan f1-score.) dan confusion matrix.
  
 Oleh karena itu, analisis yang dilakukan telah mencapai goal untuk membandingkan akurasi model dengan algoritma K-Nearest Neighbor (KNN) dan Random Forest dalam mengklasifikasikan risiko diabetes berdasarkan kondisi kesehatan.
 
@@ -679,4 +656,6 @@ Random Forest dipilih karena memiliki:
 - F1-score (kelas diabetes): Random Forest 0.80, sedangkan KNN 0.72.
 
 Dapat disimpulkan bahwa Random Forest memiliki performa lebih baik secara keseluruhan untuk melakukan prediksi penyakit diabetes dibandingkan dengan model KNN. Oleh karena itu, analisis ini telah mencapai goal dalam menentukan model terbaik untuk memprediksi diabetes.
+
+Hasil pemodelan ini tentu saja akan berdampak pada masyarakat apabila diimplementasikan dengan baik, contohnya menerapkan pada website, aplikasi, atau dashboard kesehatan yang dapat diakses secara mudah oleh masyarakat. Hal ini akan meningkatkan deteksi dini masyarakat terhadap penyakit diabetes, sehingga keparahan gejala diabetes dapat dicegah secepatnya.
 
