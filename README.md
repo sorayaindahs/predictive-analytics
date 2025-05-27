@@ -176,9 +176,9 @@ Berdasarkan identifikasi, tidak ada missing valuepada kolom age, HbA1c_level, da
 
 **Identifikasi Duplikasi Data**
     
-    np.int64(4055)
+    np.int64(3854)
 
-Kode tersebut menunjukkan bahwa dataset memiliki duplikasi sebanyak 4055 baris yang harus dibersihkan.
+Kode tersebut menunjukkan bahwa dataset memiliki duplikasi sebanyak 3854 baris yang harus dibersihkan.
 
 ### Univariate Exploratory Data Analysis
 Pada tahap ini akan mengidentifikasi missing value dan outlier atau unique pada setiap fitur.
@@ -235,7 +235,7 @@ Berdasarkan identifikasi, terlihat bahwa terdapat beberapa usia yang tidak sesua
 
 Kolom hypertension tidak memiliki outlier karena kategori sesuai, yaitu 0 (tidak memiliki hipertensi) dan 1 (memiliki hipertensi).
 
-Terdapat 2 kategori dalam fitur hypertension, yaitu 0 (tidak memiliki  hipertensi) dan 1 (memiliki  hipertensi). Sebesar 92.2% pasien tidak memiliki  hipertensi dan 7.8% pasien memiliki  hipertensi.
+Terdapat 2 kategori dalam fitur hypertension, yaitu 0 (tidak memiliki  hipertensi) dan 1 (memiliki  hipertensi). Sebesar 92.5% pasien tidak memiliki  hipertensi dan 7.5% pasien memiliki  hipertensi.
 
 **Fitur heart_disease**
 
@@ -249,7 +249,7 @@ Terdapat 2 kategori dalam fitur hypertension, yaitu 0 (tidak memiliki  hipertens
 
 Kolom heart_disease tidak memiliki outlier karena kategori sesuai, yaitu 0 (tidak memiliki penyakit jantung) dan 1 (memiliki penyakit jantung).
 
-Terdapat 2 kategori dalam fitur heart_disease, yaitu 0 (tidak memiliki penyakit jantung) dan 1 (memiliki penyakit jantung). Sebesar 95.9% pasien tidak memiliki penyakit jantung dan 4.1% pasien memiliki penyakit jantung.
+Terdapat 2 kategori dalam fitur heart_disease, yaitu 0 (tidak memiliki penyakit jantung) dan 1 (memiliki penyakit jantung). Sebesar  96.1% pasien tidak memiliki penyakit jantung dan 3.9% pasien memiliki penyakit jantung.
 
 
 **Fitur smoking_history**
@@ -272,7 +272,7 @@ Terdapat 2 kategori dalam fitur heart_disease, yaitu 0 (tidak memiliki penyakit 
 
     ever	     4003
 
-Berdasarkan identifikasi, kolom smoking_history berisi 6 kategori, yaitu No Info, never, former, current, not current, dan ever. Untuk mempermudah analisis, sebaiknya dikategorikan lagi menjadi never (tidak pernah merokok), ever (pernah tapi sudah tidak merokok), dan current (saat ini perokok). Untuk former dan not current dapat dikategorikan ke ever karena sama-sama pernah merokok, tetapi saat ini sudah tidak merokok. Selanjutnya, kategori No Info sebanyak 34946 dipertahankan agar tidak menghilangkan banyak informasi karena frekuensinya yang sangat besar.
+Berdasarkan identifikasi, kolom smoking_history berisi 6 kategori, yaitu No Info, never, former, current, not current, dan ever. Untuk mempermudah analisis, sebaiknya dikategorikan lagi menjadi never (tidak pernah merokok), ever (pernah tapi sudah tidak merokok), dan current (saat ini perokok). Untuk former dan not current dapat dikategorikan ke ever karena sama-sama pernah merokok, tetapi saat ini sudah tidak merokok. Selanjutnya, kategori No Info sebanyak  35816 dipertahankan agar tidak menghilangkan banyak informasi karena frekuensinya yang sangat besar.
 
 **Fitur bmi**
 
@@ -305,7 +305,7 @@ Terlihat bahwa kolom blood_glucose_level memiliki banyak outliers, namun tidak p
 
 Output di atas menunjukkan bahwa kolom diabetes tidak memiliki outlier karena kategori sesuai, yaitu 0 (tidak memiliki penyakit diabetes) dan 1 (memiliki penyakit diabetes).
 
-Terdapat 2 kategori dalam fitur diabetes, yaitu 0 (tidak memiliki penyakit diabetes) dan 1 (memiliki penyakit diabetes). Sebesar 91.1% pasien tidak memiliki penyakit diabetes dan 8.9% pasien memiliki penyakit diabetes.
+Terdapat 2 kategori dalam fitur diabetes, yaitu 0 (tidak memiliki penyakit diabetes) dan 1 (memiliki penyakit diabetes). Sebesar 91.5% pasien tidak memiliki penyakit diabetes dan 8.5% pasien memiliki penyakit diabetes.
 
 **Histogram Fitur Numerik (age, bmi, HbA1c_level, dan blood_glucose_level)**
 
@@ -401,7 +401,7 @@ jumlah sampel  persentase
 Terdapat 4 kategori dalam fitur smoking_history, yaitu never (tidak pernah merokok), No Info (tidak memberi informasi), ever (pernah tapi sudah tidak merokok), dan current (saat ini perokok). Sebanyak 36.1% pasien tidak pernah merokok, sebanyak 33.7% pasien tidak memberikan informasi, sebanyak 20.5% pasien pernah tapi sudah berhenti merokok, dan 9.7% pasien saat ini perokok.
 
 ### Menghapus Duplikasi Data
-Berdasarkan identifikasi duplikasi data, terdapat duplikasi sebanyak 4055 baris yang harus dibersihkan. Setelah dibersihkan jumlah baris menjadi sebanyak 94900 baris
+Berdasarkan identifikasi duplikasi data, terdapat duplikasi sebanyak 3854 baris yang harus dibersihkan. Setelah dibersihkan jumlah baris menjadi sebanyak 94900 baris
 
 ### Cek Korelasi
 
