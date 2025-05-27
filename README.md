@@ -51,26 +51,18 @@ Dataset ini berisi beberapa kondisi kesehatan pasien/indikator yang dapat diguna
     RangeIndex: 100000 entries, 0 to 99999
 
     Data columns (total 9 columns):
-
-          Column             Non-Null Count   Dtype 
-
-    0   gender               100000 non-null  object
-
-    1   age                  100000 non-null  float64
-
-    2   hypertension         100000 non-null  int64
-
-    3   heart_disease        100000 non-null  int64  
-
-    4   smoking_history      100000 non-null  object 
-
-    5   bmi                  100000 non-null  float64
-
-    6   HbA1c_level          100000 non-null  float64
-
-    7   blood_glucose_level  100000 non-null  int64
- 
-    8   diabetes             100000 non-null  int64
+    
+    |   Column              | Non-Null Count     | Dtype    |
+    |---------------------- |--------------------|----------|
+    | 0  gender             | 100000 non-null    | object   |
+    | 1  age                | 100000 non-null    | float64  |
+    | 2  hypertension       | 100000 non-null    | int64    |
+    | 3  heart_disease      | 100000 non-null    | int64    |
+    | 4  smoking_history    | 100000 non-null    | object   |
+    | 5  bmi                | 100000 non-null    | float64  |
+    | 6  HbA1c_level        | 100000 non-null    | float64  |
+    | 7  blood_glucose_level| 100000 non-null    | int64    |
+    | 8  diabetes           | 100000 non-null    | int64    |
 
 Diabetes Prediction Dataset memiliki **100000 baris** dan **9 kolom**.
 
@@ -104,23 +96,17 @@ Diabetes Prediction Dataset memiliki **100000 baris** dan **9 kolom**.
 ### Cek Summary
 Summary dilakukan pada data numerik saja, sehingga kolom heypertension, heart_disease, dan diabetes yang masih bertipe float64 perlu diubah ke object terlebih dahulu karena merupakan kolom yang berisi kategori (0=tidak dan 1=ya).
 
-                  age	             bmi            	 HbA1c_level	  blood_glucose_level
+    |        | age           | bmi           | HbA1c_level    | blood_glucose_level  |
+    |--------|-------------  |-------------  |-------------   |----------------------|
+    | count  | 100000.000000 | 100000.000000 | 100000.000000  | 100000.000000        |
+    | mean   | 41.885856     | 27.320767     | 5.527507       | 138.058060           |
+    | std    | 22.516840     | 6.636783      | 1.070672       | 40.708136            |
+    | min    | 0.080000      | 10.010000     | 3.500000       | 80.000000            |
+    | 25%    | 24.000000     | 23.630000     | 4.800000       | 100.000000           |
+    | 50%    | 43.000000     | 27.320000     | 5.800000       | 140.000000           |
+    | 75%    | 60.000000     | 29.580000     | 6.200000       | 159.000000           |
+    | max    | 80.000000     | 95.690000     | 9.000000       | 300.000000           |
 
-    count	 100000.000000	       100000.000000	    100000.000000	    100000.000000
-
-    mean	   41.885856	          27.320767	         5.527507	        138.058060
-
-    std	       22.516840    	       6.636783      	 1.070672	         40.708136
-
-    min         0.080000     	      10.010000	         3.500000	         80.000000
-
-    25%	       24.000000              23.630000          4.800000           100.000000
-
-    50%        43.000000    	      27.320000    	     5.800000	        140.000000
-
-    75%   	   60.000000	          29.580000     	 6.200000           159.000000
-
-    max        80.000000	          95.690000     	 9.000000           300.000000
 
 `age` (usia)
 - Rata-rata usia pasien: 41.89 tahun dengan rentang 0.08 sampai 80 tahun.
@@ -185,41 +171,31 @@ Pada tahap ini akan mengidentifikasi missing value dan outlier atau unique pada 
 
 **Fitur gender**
 
-    gender
 
-    Female    58552
+    | gender | jumlah sampel  | persentase (%) |
+    |--------|----------------|----------------|
+    | Female | 58552          | 58.6           |
+    | Male   | 41430          | 41.4           |
+    | Other  | 18             | 0.0            |
 
-    Male      41430
-
-    Other        18
 
 Berdasarkan identifikasi, terlihat bahwa kolom gender berisi 3 kategori, yaitu Female, Male, dan Other. Pada dasarnya gender terdiri dari 2 kategori, yaitu Female dan Male saja, sehingga 18 baris yang kolom Gender berisi Other sebaiknya dihapus agar tidak menimbulkan bias.
 
 **Fitur age**
 
-    age	     count
-
-    80.00	  5621
-
-    51.00	  1619
-
-    47.00	  1572
-
-    48.00  	  1568
-
-    49.00     1541
-
-    ...	       ...
-
-    0.48        83
-
-    1.00   	    83
-
-    0.40	    66
-
-    0.16   	    59
-
-    0.08  	    36
+        | age   | count |
+        |-------|-------|
+        | 80.00 | 5621  |
+        | 51.00 | 1619  |
+        | 47.00 | 1572  |
+        | 48.00 | 1568  |
+        | 49.00 | 1541  |
+        | ...   | ...   |
+        | 0.48  | 83    |
+        | 1.00  | 83    |
+        | 0.40  | 66    |
+        | 0.16  | 59    |
+        | 0.08  | 36    |
 
 Berdasarkan identifikasi, terlihat bahwa terdapat beberapa usia yang tidak sesuai, seperti dalam bentuk desimal. Oleh karena itu, perlu dibersihkan untuk mempermudah analisis dan tidak menimbulkan bias.
 
@@ -229,9 +205,9 @@ Berdasarkan identifikasi, terlihat bahwa terdapat beberapa usia yang tidak sesua
 
     hypertension      
 
-    0                     87463        92.2
+    0                     92515        92.5
 
-    1                      7437         7.8
+    1                      7485        7.5
 
 Kolom hypertension tidak memiliki outlier karena kategori sesuai, yaitu 0 (tidak memiliki hipertensi) dan 1 (memiliki hipertensi).
 
@@ -243,9 +219,9 @@ Terdapat 2 kategori dalam fitur hypertension, yaitu 0 (tidak memiliki  hipertens
 
     heart_disease       
 
-    0                      90986        95.9
+    0                      96058        96.1
 
-    1                       3914         4.1
+    1                       3942         3.9
 
 Kolom heart_disease tidak memiliki outlier karena kategori sesuai, yaitu 0 (tidak memiliki penyakit jantung) dan 1 (memiliki penyakit jantung).
 
@@ -256,21 +232,14 @@ Terdapat 2 kategori dalam fitur heart_disease, yaitu 0 (tidak memiliki penyakit 
 
     **Fitur smoking_history**
 
-    count
-
-    smoking_history	
-
-    never	    35055
-
-    No Info   	34946
-
-    former	     9352
-
-    current	     9285
-
-    not current	 6430
-
-    ever	     4003
+    | smoking_history  | count  | persentase |
+    |------------------|--------|------------|
+    | No Info          | 35816  | 35.8       |
+    | Never            | 35095  | 35.1       |
+    | former           | 9352   | 9.4        |
+    | current          | 9286   | 9.3        |
+    | not current      | 6447   | 6.4        |
+    | ever             | 4004   | 4.0        |
 
 Berdasarkan identifikasi, kolom smoking_history berisi 6 kategori, yaitu No Info, never, former, current, not current, dan ever. Untuk mempermudah analisis, sebaiknya dikategorikan lagi menjadi never (tidak pernah merokok), ever (pernah tapi sudah tidak merokok), dan current (saat ini perokok). Untuk former dan not current dapat dikategorikan ke ever karena sama-sama pernah merokok, tetapi saat ini sudah tidak merokok. Selanjutnya, kategori No Info sebanyak  35816 dipertahankan agar tidak menghilangkan banyak informasi karena frekuensinya yang sangat besar.
 
@@ -299,9 +268,9 @@ Terlihat bahwa kolom blood_glucose_level memiliki banyak outliers, namun tidak p
 
     diabetes      
 
-    0                 86456        91.1
+    0                 91500        91.5
 
-    1                  8444         8.9
+    1                  8500         8.5
 
 Output di atas menunjukkan bahwa kolom diabetes tidak memiliki outlier karena kategori sesuai, yaitu 0 (tidak memiliki penyakit diabetes) dan 1 (memiliki penyakit diabetes).
 
@@ -390,15 +359,15 @@ jumlah sampel  persentase
 
     smoking_history      
 
-    never                    34305        36.1
+    | smoking_history  | count  | percentage (%) |
+    |------------------|--------|----------------|
+    | never            | 35002  | 35.4           |
+    | No Info          | 34917  | 35.3           |
+    | ever             | 19766  | 20.0           |
+    | current          | 9270   | 9.4            |
 
-    No Info                  31965        33.7
 
-    ever                     19449        20.5
-
-    current                   9181         9.7
-
-Terdapat 4 kategori dalam fitur smoking_history, yaitu never (tidak pernah merokok), No Info (tidak memberi informasi), ever (pernah tapi sudah tidak merokok), dan current (saat ini perokok). Sebanyak 36.1% pasien tidak pernah merokok, sebanyak 33.7% pasien tidak memberikan informasi, sebanyak 20.5% pasien pernah tapi sudah berhenti merokok, dan 9.7% pasien saat ini perokok.
+Terdapat 4 kategori dalam fitur smoking_history, yaitu never (tidak pernah merokok), No Info (tidak memberi informasi), ever (pernah tapi sudah tidak merokok), dan current (saat ini perokok). Sebanyak 35.4% pasien tidak pernah merokok, sebanyak 35.3% pasien tidak memberikan informasi, sebanyak 20.0% pasien pernah tapi sudah berhenti merokok, dan 9.4% pasien saat ini perokok.
 
 ### Menghapus Duplikasi Data
 Berdasarkan identifikasi duplikasi data, terdapat duplikasi sebanyak 3854 baris yang harus dibersihkan. Setelah dibersihkan jumlah baris menjadi sebanyak 94900 baris
@@ -419,29 +388,19 @@ Fitur `blood_glucose_level` memiliki korelasi 0.42. Hal ini menunjukkan korelasi
 ### Encoding Fitur Kategori
 Proses encoding variabel kategorikal menggunakan LabelEncoder untuk mengubah data teks menjadi format numerik yang dapat diproses saat membuat model. Kolom seperti smoking_history, gender, hypertension, heart_disease, dan diabetes diubah nilainya menjadi angka sesuai urutan kategorinya.
 
-          gender	  age	hypertension	heart_disease	smoking_history	...	...	...	diabetes
-
-     0	    0	        80	    0	            1	                3			          	0
-
-     1	    0	        54	    0	            0	                0		          	  	0
-
-     2	    1	        28	    0	            0	                3		                0
-     
-     3	    0        	36	    0	            0	                1				        0
-
-     4	    1        	76	    1	            1	                1				        0
-
-    ...	   ...      	...	   ...	         ...	               ...	  ...	...	...	   ...
-
-    99994	 0        	36	    0	            0	                0			            0
-
-    99996	 0        	2	     0	            0	                0			            0
-
-    99997	 1	        66	    0	            0	                2			            0
-
-    99998	 0	        24	    0	            0	                3			            0
-
-    99999	 0	        57	    0	            0	                1		                0
+    | Index | gender  | age | hypertension | heart_disease  | smoking_history  | ... | diabetes |
+    |--------|--------|-----|--------------|----------------|------------------|-----|----------|
+    | 0      | 0      | 80  | 0            | 1              | 3                | ... | 0        |
+    | 1      | 0      | 54  | 0            | 0              | 0                | ... | 0        |
+    | 2      | 1      | 28  | 0            | 0              | 3                | ... | 0        |
+    | 3      | 0      | 36  | 0            | 0              | 1                | ... | 0        |
+    | 4      | 1      | 76  | 1            | 1              | 1                | ... | 0        |
+    | ...    | ...    | ... | ...          | ...            | ...              | ... | ...      |
+    | 99994  | 0      | 36  | 0            | 0              | 0                | ... | 0        |
+    | 99996  | 0      | 2   | 0            | 0              | 0                | ... | 0        |
+    | 99997  | 1      | 66  | 0            | 0              | 2                | ... | 0        |
+    | 99998  | 0      | 24  | 0            | 0              | 3                | ... | 0        |
+    | 99999  | 0      | 57  | 0            | 0              | 1                | ... | 0        |
 
 ### Train-Test-Split
 Sebelum melakukan pemodelan, data dibagi menjadi data training sebanyak 80% dan data testing sebanyak 20% yang bertujuan agar model yang dilatih dapat memelajari pola pada data training dan menghasilkan performa yang baik.
@@ -449,17 +408,17 @@ Sebelum melakukan pemodelan, data dibagi menjadi data training sebanyak 80% dan 
 ### Standarisasi
 Standarisasi diterapkan pada fitur numerik menggunakan StandardScaler yang bertujuan untuk mengubah skala data agar memiliki rata-rata 0 dan standar deviasi 1. Hal ini dapat menyeimbangkan skala antarfitur.
 
-                        age	          bmi	   HbA1c_level 	 blood_glucose_level
+    | Statistik | age         | bmi         | HbA1c_level | blood_glucose_level  |
+    |-----------|-------------|-------------|-------------|----------------------|
+    | count     | 7.592e+04   | 7.592e+04   | 7.592e+04   | 7.592e+04            |
+    | mean      | 1.4319e-17  | 1.9780e-16  | -1.0051e-15 | -1.3739e-16          |
+    | std       | 1.000007    | 1.000007    | 1.000007    | 1.000007             |
+    | min       | -1.851772   | -2.635134   | -1.894611   | -1.420121            |
+    | 25%       | -0.816930   | -0.585842   | -0.683438   | -0.932065            |
+    | 50%       | 0.037940    | -0.007486   | 0.248233    | 0.044048             |
+    | 75%       | 0.802824    | 0.387193    | 0.620902    | 0.507701             |
+    | max       | 1.702687    | 4.951802    | 3.229581    | 3.948496             |
 
-            11222	 0.127926	  -0.007486   	0.248233	     0.410090
-
-            7650    -1.626807	  -0.007486	    0.155066	     0.507701
-
-            58754	 1.072783	   2.585249	    0.434567	     0.410090
-
-            51644	-1.851772	  -1.879173	    0.620902     	 0.044048
-
-            23913	 1.342742	  -0.007486     0.155066     	 0.483298
 
 - Nilai mean untuk fitur numerik (age, bmi, HbA1c_level, blood_glucose_level) sangat mendekati 0.
 - Nilai st deviasi semua fitur tersebut adalah 1.000007, yang sangat dekat dengan 1.
