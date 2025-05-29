@@ -341,7 +341,7 @@ Histogram di atas menunjukkan bahwa:
 
        Male            39386        41.5
 
-2) Berdasarkan exploratory data pada fitur age yang telah dilakukan, berikut boxplot age setelah menghapus beberapa nilai yang tidak sesuai.
+2) Berdasarkan exploratory data pada fitur age yang telah dilakukan, langkah yang perlu dilakukan adalah menghapus nilai age yang tidak sesuai, yaity  < 1. Setelah itu, tipe data diubah menjadi int64 agar lebih sesuai dan mudah dianalisis. Berikut boxplot age setelah menghapus beberapa nilai yang tidak sesuai.
 
 ![image](https://github.com/user-attachments/assets/5b068d50-89b0-4bb9-9eef-0ee6acb656f7)
 
@@ -495,7 +495,7 @@ y_pred_test_rf = rf_model.predict(X_test)
 
 - n_estimator: jumlah trees di forest. Pada analisis ini menggunakan n_estimators=50 yang berarti jumlah pohon keputusan (decision trees) yang dibentuk dalam ensemble Random Forest sebanyak 50.
 - max_depth: kedalaman atau panjang pohon yang merupakan ukuran seberapa banyak pohon dapat melakukan splitting untuk membagi setiap node ke dalam jumlah pengamatan yang diinginkan. max_depth=16 artinya setiap pohon boleh bercabang hingga 16 level 
-- random_state: digunakan untuk mengontrol angka acak generator yang digunakan. 
+- random_state: digunakan untuk mengontrol angka acak generator yang digunakan. random_state=55, angka 55 tidak punya makna khusus, tetapi merupakan nilai tetap.
 - n_jobs: jumlah job yang digunakan secara paralel yang merupakan komponen untuk mengontrol thread atau proses yang berjalan secara paralel. n_jobs=-1 artinya semua proses berjalan secara paralel.
 - predict(X_train): untuk melihat performa model di data training.
 - predict(X_test): untuk menguji generalisasi model ke data yang belum pernah dilihat.
